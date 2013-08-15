@@ -1,0 +1,7 @@
+<%= form_tag("/login", method: "get") do %>
+  <%= label_tag(:login, "PMC login:") %>
+  <%= text_field_tag(:login) %> <br/>
+  <%= label_tag(:password, "PMC password:") %>
+  <%= text_field_tag(:password) %> <br/><br/>
+  <%= submit_tag("Log in") %>
+<% end %>

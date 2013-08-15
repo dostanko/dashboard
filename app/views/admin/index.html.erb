@@ -1,0 +1,6 @@
+<h1>Dashboard</h1>
+<% if loggedIn %>
+	<%= render partial: "admin" %>
+<% else %>
+	<%= render partial: "login" %>
+<% end %>
