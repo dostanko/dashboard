@@ -12,7 +12,12 @@ class AdminController < ApplicationController
     #User.create(email: "dostanko@gmail.com", role: "SUPER_ADMIN")
     current_user = User.where(:email => params[:login]).first
     session[:user_id] = current_user.id if current_user
-    render :index
+    redirect_to :root
+  end  
+  
+  def logout
+    session[:user_id] = nil
+    redirect_to :root
   end  
   
 end

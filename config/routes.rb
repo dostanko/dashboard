@@ -6,6 +6,7 @@ Dashboard::Application.routes.draw do
   # You can have the root of your site routed with "root"
    root 'admin#index'
    get 'login', to: 'admin#login'
+   get 'logout', to: 'admin#logout'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

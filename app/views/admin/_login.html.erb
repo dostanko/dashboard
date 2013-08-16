@@ -1,7 +1,26 @@
+<nav class="top-bar" data-options="is_hover:false">
+</nav>
+
 <%= form_tag("/login", method: "get") do %>
-  <%= label_tag(:login, "PMC login:") %>
-  <%= text_field_tag(:login) %> <br/>
-  <%= label_tag(:password, "PMC password:") %>
-  <%= text_field_tag(:password) %> <br/><br/>
-  <%= submit_tag("Log in") %>
+  <fieldset>
+    <legend>Login Form</legend>
+	<div class="row">
+      <div class="small-4 columns">
+          <%= label_tag(:login, "PMC login:") %>
+		  <%= text_field_tag(:login) %> <br/>
+      </div>
+	</div>
+    <div class="row">
+      <div class="small-4 columns">
+         <%= label_tag(:password, "PMC password:") %>
+		 <%= text_field_tag(:password) %> <br/><br/>
+      </div>
+    </div>
+    <div class="row">
+	  <div class="small-2 columns">
+	     <%= submit_tag("Log in", :class => "button prefix") %>
+      </div>
+	</div>
+  </fieldset>
 <% end %>
+
