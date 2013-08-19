@@ -1,4 +1,18 @@
 // Place all the styles related to the admin controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+div.add_form {
+    -webkit-transition: opacity 1s ease-out;
+    opacity: 0; 
+    height: 0;
+    overflow: hidden;
+}
 
+div.visible_form {
+    opacity: 1;
+    height: auto;
+}
+
+button.close{
+    background:url(close.png) no-repeat;
+}
