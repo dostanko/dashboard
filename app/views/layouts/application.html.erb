@@ -17,12 +17,8 @@
 
   	<%= stylesheet_link_tag    "application" %>
   	<%= javascript_include_tag "vendor/custom.modernizr" %>
-    <%= csrf_meta_tags %>
-	<script>
-	  document.write('<script src=/assets/'
-	    + ('__proto__' in {} ? 'zepto' : 'jquery')
-	    + '.js><\/script>');
-	</script>
+        <%= csrf_meta_tags %>
+	<script src='/assets/zepto.js'></script>
   </head>
 
   <body>

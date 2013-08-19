@@ -5,6 +5,8 @@ class User
  
   field :email,    type: String
   field :role,     type: String,   :default => :VIEWER
+  
+  has_and_belongs_to_many :dashboards
  
   validates_presence_of :email, :role
 end
