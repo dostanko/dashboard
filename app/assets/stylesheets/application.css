@@ -11,3 +11,23 @@
  *= require_self
  *= require_tree .
  */
+
+div.mask {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: #cccccc;
+  opacity: 0.5;
+  visibility: hidden;
+}
+
+div.mask img {
+  margin: 100px 45%;
+  height: 100px;
+}
+
+.dash_form div.alert {
+  visibility: hidden;
+}

@@ -8,6 +8,8 @@ Dashboard::Application.routes.draw do
    get 'login', to: 'admin#login'
    get 'logout', to: 'admin#logout'
 
+   resources :dashboards
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

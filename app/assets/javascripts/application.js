@@ -13,4 +13,9 @@
 //= require foundation
 //= require_tree .
 
-$(function(){ $(document).foundation();});
+$(function(){
+    $(document).foundation();
+
+    Global = {};
+    Global.CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+});
