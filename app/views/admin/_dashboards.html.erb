@@ -1,10 +1,6 @@
-<div class="row">
-  <div class="small-3 columns">
-    <button id="add_dashboard_btn" class="button">Add Dashboard</button>
-  </div>
-  <div class="small-9 columns">
+<button id="add_dashboard_btn" class="button">Add Dashboard</button>
     <div id="add_dashboard_form" class="panel dash_form add_form">
-      <div class="row">
+      <div>
         <div class="small-9 columns">
           <div class="alert-box alert round">&nbsp;</div>
         </div>
@@ -12,34 +8,28 @@
           <div class="hide_form"></div>
         </div>
       </div>
-      <div class="row">
+      <div>
         <div class="small-6 columns">
           <input type="text" id="new_dashboard_name" name="name" placeholder="unique dashboard name">
         </div>
-        <div class="small-3 columns"><button id="creating_dashboard" class="small button">create&continue</button></div>
-        <div class="small-3 columns"><button id="create_dashboard" class="small button">just create</button></div>
+        <div class="small-6 columns">
+          <button id="creating_dashboard" class="small button">create&continue</button>
+          <button id="create_dashboard" class="small button">just create</button>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
-<div class="row">
-	&nbsp;
-</div>
-<div class="row">
-  <div class="small-3 columns">N58</div>
-  <div class="small-2 columns">active</div>
-  <div class="small-3 columns">link</div>
-  <div class="small-1 columns"><a href="#" class="small button">edit</a></div>
-  <div class="small-2 columns"><a href="#" class="small button">edit permissions</a></div>
-</div>
+<table id='dashboards_table'>
+  <thead>
+    <tr>
+      <th width="200">name</th>
+      <th>url</th>
+      <th width="150">status</th>
+      <th width="250">actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
 
-<div class="row">
-  <div class="small-3 columns">N58</div>
-  <div class="small-2 columns">active</div>
-  <div class="small-3 columns">link</div>
-  <div class="small-1 columns"><a href="#" class="small button">edit</a></div>
-  <div class="small-2 columns"><a href="#" class="small button">edit permissions</a></div>
-</div>
-
-<%= render partial: "dashboard" %>
+<!--%= render partial: "dashboard" %-->

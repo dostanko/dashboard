@@ -1,6 +1,9 @@
 class DashboardsController < ApplicationController
 
   def index
+    respond_to do |format|
+      format.json { render :json => {:dashboards => Dash.all } }  
+    end
   end
 
   def create

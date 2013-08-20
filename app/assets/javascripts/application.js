@@ -18,4 +18,5 @@ $(function(){
 
     Global = {};
     Global.CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+    Dashboard.loadAll();
 });

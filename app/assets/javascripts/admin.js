@@ -60,8 +60,37 @@ Dashboard.crate = function(successFun, btn){
         },
         error: function(xhr, type){
             alert("server error");
-            form.find('.alert').append(data.errors);
             mask.css('visibility', 'hidden');
         }
     });
 };
+
+Dashboard.loadAll = function(){
+    var mask = $('#mask')
+    $.ajax({
+        type: 'GET',
+        url: '/dashboards',
+        headers: {
+           'X-CSRF-Token': Global.CSRF_TOKEN 
+        },
+        dataType: 'json',
+        timeout: 300,
+        success: function(data){
+            console.log(data);
+            var tbody = $('#dashboards_table').find('tbody');
+            tbody.text('');
+            $.each(data.dashboards, function(index, dash){
+              tbody.append('<tr><td>' + dash.name + '</td><td>' 
+                  + '/dashboard/'+ dash.name + '</td><td>' 
+                  + '/' + '</td><td>' 
+                  + '/' +'</td></tr>');
+            });
+            mask.css('visibility', 'hidden');
+        },
+        error: function(xhr, type){
+            alert("server error");
+            mask.css('visibility', 'hidden');
+        }
+    });
+};
+
