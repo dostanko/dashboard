@@ -18,5 +18,12 @@ class DashboardsController < ApplicationController
       format.json { render :json => {:errors => dashboard.errors.full_messages, :dashboard =>  dashboard } }  
     end
   end
+
+  def show
+    puts params
+    puts 'ddd'
+    name = params[:id]
+    @dash = Dash.where(:name => name)[0] 
+  end
   
 end

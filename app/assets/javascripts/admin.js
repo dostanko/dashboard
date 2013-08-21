@@ -1,3 +1,6 @@
+Global = {};
+Global.CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+
 $('#add_dashboard_btn').click( function() { 
     var form =  $('#add_dashboard_form');
     form.addClass('visible_form');
@@ -6,17 +9,9 @@ $('#add_dashboard_btn').click( function() {
 });
 
 $('#create_dashboard').click( function() {
-    var me = this;
     var successFun = function(data){
-        $(me).parents('.visible_form').removeClass('visible_form');
-        //todo reload dashboards     
-    };
-    Dashboard.crate(successFun, this);
-});
-
-$('#creating_dashboard').click( function() {
-    var successFun = function(data){
-        //todo sow full form
+        var url =  "http://" + window.location.host + "/dashboards/" + data.dashboard.name;
+        window.location.href = url;
     };
     Dashboard.crate(successFun, this );
 });
@@ -76,14 +71,16 @@ Dashboard.loadAll = function(){
         dataType: 'json',
         timeout: 300,
         success: function(data){
-            console.log(data);
             var tbody = $('#dashboards_table').find('tbody');
             tbody.text('');
             $.each(data.dashboards, function(index, dash){
-              tbody.append('<tr><td>' + dash.name + '</td><td>' 
+                var editUrl =  "http://" + window.location.host + "/dashboards/" + dash.name;
+                tbody.append('<tr><td>' + dash.name + '</td><td>' 
                   + '/dashboard/'+ dash.name + '</td><td>' 
                   + '/' + '</td><td>' 
-                  + '/' +'</td></tr>');
+                  + '<a href="' + editUrl + '" class="small button">edit</a>' 
+                  + '<a href="#" class="small button">delete</a>' 
+                  + '</td></tr>');
             });
             mask.css('visibility', 'hidden');
         },
@@ -93,4 +90,14 @@ Dashboard.loadAll = function(){
         }
     });
 };
+
+Dashboard.deletePopup = function(name, id){
+
+};
+
+$( function() {
+    if ($('#dashboards_table').length == 1) {
+        Dashboard.loadAll();
+    }
+});
 
