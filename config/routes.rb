@@ -7,6 +7,7 @@ Dashboard::Application.routes.draw do
    root 'admin#index'
    get 'login', to: 'admin#login'
    get 'logout', to: 'admin#logout'
+   get 'dashboard/:name', to: 'dashboard#show'
 
    resources :dashboards
 
