@@ -1,3 +1,7 @@
+require "rvm/capistrano"
+require "bundler/capistrano"
+
+set :rvm_ruby_string, 'default'
 set :application, "dashboard"
 default_run_options[:pty] = true
 
@@ -27,8 +31,7 @@ server "epbyminw1499.minsk.epam.com", :app, :web
 namespace :deploy do
 #   task :start do ; end
 #   task :stop do ; end
-   task :restart do  #, :roles => :app, :except => { :no_release => true } do
-     run "bundle instal"
-     run "thin start"
-   end
+  task :restart do
+    run "cd '#{current_path}'; bundle exec thin restart -C thin.yml"
+  end
 end

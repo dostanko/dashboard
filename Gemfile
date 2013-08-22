@@ -43,4 +43,5 @@ gem 'mongoid', git: 'https://github.com/mongoid/mongoid.git'
 
 gem 'thin', '~> 1.5.1'
 
-gem 'capistrano', '~> 2.15.5' , :group => :development
+gem 'capistrano', '~> 2.15.5' , :group => :develoipment
+gem 'rvm-capistrano',  '~>1.3.0', :group => :develoipment 
