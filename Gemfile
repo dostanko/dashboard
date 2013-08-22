@@ -40,3 +40,7 @@ end
 
 gem 'bson_ext'
 gem 'mongoid', git: 'https://github.com/mongoid/mongoid.git'
+
+gem 'thin', '~> 1.5.1'
+
+gem 'capistrano', '~> 2.15.5' , :group => :development
