@@ -12,7 +12,7 @@
  *= require_tree .
  */
 
-div.mask {
+#mask {
   position: fixed;
   top: 0px;
   right: 0px;
@@ -23,11 +23,3 @@ div.mask {
   visibility: hidden;
 }
 
-div.mask img {
-  margin: 100px 45%;
-  height: 100px;
-}
-
-.dash_form div.alert {
-  visibility: hidden;
-}

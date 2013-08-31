@@ -32,6 +32,8 @@ namespace :deploy do
 #   task :start do ; end
 #   task :stop do ; end
   task :restart do
+#TODO check if exists bundler
+#gem install --version '1.3.5' bundler 
     run "cd '#{current_path}'; bundle exec thin restart -C thin.yml"
   end
 end

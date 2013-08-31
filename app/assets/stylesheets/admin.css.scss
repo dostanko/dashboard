@@ -3,17 +3,30 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 div.add_form {
     -webkit-transition: opacity 1s ease-out;
-    opacity: 0; 
     height: 0;
     overflow: hidden;
+    visibility: hidden;
 }
 
 div.visible_form {
-    opacity: 1;
-    height: auto;
+    visibility: visible !important;
 }
 
-.hide_form{
-    background:url(close.png) no-repeat;
-    height: 50px;
+.dash_form div.alert {
+  visibility: hidden;
 }
+
+div.delete_dash_form {
+    position:fixed;
+    top:100px; 
+    left: 50%; 
+    margin-left: -150px; 
+    width:300px; 
+    height:160px; 
+    border-style:solid;
+    border-width:3px;
+    background:white;
+    padding:20px;
+    visibility: hidden;
+}
+

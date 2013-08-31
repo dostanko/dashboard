@@ -20,10 +20,14 @@ class DashboardsController < ApplicationController
   end
 
   def show
-    puts params
-    puts 'ddd'
     name = params[:id]
     @dash = Dash.where(:name => name)[0] 
+  end
+
+  def delete
+    dash_id = params[:dash_id]
+    Dash.delete(dash_id)
+    format.json { render :json => {:errors => "",  :dashboard =>  dashboard } }
   end
   
 end

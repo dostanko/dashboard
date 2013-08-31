@@ -7,11 +7,11 @@
         <div class="small-6 columns">
           <input type="text" id="new_dashboard_name" name="name" placeholder="unique dashboard name">
         </div>
-        <div class="small-3 columns">
+        <div class="small-4 columns">
           <button id="create_dashboard" class="small button">create&continue</button>
         </div>
-        <div class="small-1 columns">
-          <div class="hide_form"></div>
+        <div class="small-2 columns">
+          <div class="hide_form small button">Cancel</div>
         </div>
       </div>
     </div>
@@ -28,4 +28,17 @@
   <tbody>
   </tbody>
 </table>
+
+<div id="mask"></div>
+
+<div class="delete_dash_form">
+    <h6>Enter Dashboard Name to Delete</h6>
+    <input type="text" id="del_dash_name" name="name" placeholder="dashboard name">
+    <div class="small-6 columns">
+        <button id="del_dash_btn" class="small alert button">Delete</button>
+    </div>
+    <div class="small-6 columns">
+        <button class="hide_form small success button">Cancel</button>
+    </div>
+</div>
 
