@@ -1,20 +1,19 @@
-<div style="float: left;">
-<button id="add_dashboard_btn" class="button">Add Dashboard</button>
-</div>
-    <div id="add_dashboard_form" class="panel dash_form add_form">
-      <div class="alert-box alert round"></div>
-      <div>
-        <div class="small-6 columns">
+<div id="add_dashboard_form" class="panel">
+    <div class="row">
+       <h6 class="alert small-3 columns" style="visibility:hidden;color:red;">
+          &nbsp;
+       </h6>
+    </div>
+    <div class="row">
+        <div class="small-3 columns">
           <input type="text" id="new_dashboard_name" name="name" placeholder="unique dashboard name">
         </div>
-        <div class="small-4 columns">
-          <button id="create_dashboard" class="small button">create&continue</button>
+        <div class="small-3 columns">
+           <button id="add_dashboard_btn" class="small button">Add Dashboard</button>
         </div>
-        <div class="small-2 columns">
-          <div class="hide_form small button">Cancel</div>
-        </div>
-      </div>
+        <div class="small-6 columns"></div>
     </div>
+</div>
 <br/>
 <table id='dashboards_table'>
   <thead>

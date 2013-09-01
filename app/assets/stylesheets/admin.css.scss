@@ -1,20 +1,6 @@
 // Place all the styles related to the admin controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-div.add_form {
-    -webkit-transition: opacity 1s ease-out;
-    height: 0;
-    overflow: hidden;
-    visibility: hidden;
-}
-
-div.visible_form {
-    visibility: visible !important;
-}
-
-.dash_form div.alert {
-  visibility: hidden;
-}
 
 div.delete_dash_form {
     position:fixed;

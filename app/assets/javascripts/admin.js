@@ -2,22 +2,52 @@ Global = {};
 Global.CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 Global.mask = $('#mask');
 
-$('#add_dashboard_btn').click( function() { 
-    var form =  $('#add_dashboard_form');
-    form.addClass('visible_form');
-    form.find('input').val('');
-    form.find('.alert').css('visibility', 'hidden');
-});
-
-$('#create_dashboard').click( function() {
-    var successFun = function(data){
-        var url =  "http://" + window.location.host + "/dashboards/" + data.dashboard.name;
-        window.location.href = url;
-    };
-    Dashboard.crate(successFun, this );
-});
-
 var Dashboard = {};
+
+Dashboard.createForm = (function(){
+    var me =  $('#add_dashboard_form');
+    var inputs =  me.find('input');
+    var alertView =  me.find('.alert');
+    
+    $('#add_dashboard_btn').click( function() {
+        var successFun = function(data){
+            var url =  "http://" + window.location.host + "/dashboards/" + data.dashboard.name;
+            window.location.href = url;
+        };
+        var params = {};
+        $.each(inputs, function(index, input){
+            params[$(input).attr('name')] = $(input).attr('value')
+        }); 
+        alertView.css("visibility", "hidden"); 
+        $.ajax({
+            type: 'POST',
+            url: '/dashboards',
+            headers: {
+               'X-CSRF-Token': Global.CSRF_TOKEN 
+            },
+            data: params,
+            dataType: 'json',
+            success: function(data){
+                if (data.errors.length > 0){
+                    alertView.text(data.errors);
+                    alertView.css("visibility", "visible"); 
+                } else {
+                    successFun(data);
+                }
+            //Global.mask.hide();
+            },
+            error: function(xhr, type){
+            //Global.mask.hide();
+            }
+        }); 
+    });
+
+    me.find('.hide_form').click( function() {
+        me.removeClass("visible_form");
+    });
+
+    return me;
+}());
 
 Dashboard.delForm = (function(){
     var me = $('.delete_dash_form')[0];
@@ -30,6 +60,7 @@ Dashboard.delForm = (function(){
         me.curDashName = dataset.dash_name;
         me.curDashId = dataset.dash_id;
         inputName.value = "";
+        //me.find('.alert').css('visibility', 'hidden');
         $(me).css("visibility", "visible");
         Global.mask.css("visibility", "visible");
     }
@@ -53,7 +84,7 @@ Dashboard.delForm = (function(){
         });
     });
 
-    $('.hide_form').click( function() {
+    $(me).find('.hide_form').click( function() {
         Global.mask.css("visibility", "hidden");
         $(me).css("visibility", "hidden");
     });
@@ -68,42 +99,6 @@ $('#dashboards_table').on('click', '.delete_dash', function() {
     Dashboard.delForm.show(dataset);
 });
 
-//todo more general logic for requests, seporate form and just ajax
-Dashboard.crate = function(successFun, btn){
-    var form = $($(btn).parents('.dash_form')[0]);
-    var params = {};
-    var inputs = form.find('input');
-    $.each(inputs, function(index, input){
-        params[$(input).attr('name')] = $(input).attr('value')
-    });  
-    //Global.mask.toggle();
-
-    var erAlert = form.find('.alert');
-    erAlert.hide();    
-
-    $.ajax({
-        type: 'POST',
-        url: '/dashboards',
-        headers: {
-           'X-CSRF-Token': Global.CSRF_TOKEN 
-        },
-        data: params,
-        dataType: 'json',
-        timeout: 300,
-        success: function(data){
-            if (data.errors.length > 0){
-                erAlert.text(data.errors);
-                erAlert.show(); 
-            } else {
-                successFun(data);
-            }
-            //Global.mask.hide();
-        },
-        error: function(xhr, type){
-            //Global.mask.hide();
-        }
-    });
-};
 
 Dashboard.loadAll = function(){
     $.ajax({
