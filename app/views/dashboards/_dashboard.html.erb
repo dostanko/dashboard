@@ -1,45 +1,41 @@
-<form class="custom">
-  <div class="row">
-      <div class="small-2 columns">
-          <label>dashboard name</label>
-          <input type="text" placeholder="unique name">
-      </div>
-      <div class="small-2 columns">
-        <label for="customDropdown1">status</label>
-        <select id="customDropdown1" class="small">
-            <option>draft</option>
-            <option>active</option>
-        </select>
-      </div>
-      <div class="small-8 columns" style="background-color:lightgray;">
-         <div class="row">
-&nbsp;
-         </div>
-          <div class="row">
-                  <div class="small-5 columns">
-          <input type="text" placeholder="email">
-      </div>
-             <div class="small-3 columns">
-               <select id="customDropdown2" class="small">
-                 <option>admin</option>
-                 <option>content admin</option>
-               </select>
-             </div>
-            <div class="small-3 columns">
-             <a href="#" class="small button">add user</a>
-            </div>
-          </div>
-          <div class="row">
-            <div class="small-5 columns">dostanko@gmail.com</div>
-             <div class="small-3 columns">
-               <select id="customDropdown2" class="small">
-                 <option>draft</option>
-                 <option>active</option>
-               </select>
-             </div>
-             <div class="small-1 columns"> <a href="#" class="small button">save</a></div>
-             <div class="small-2 columns"> <a href="#" class="small button">delete</a></div>
-          </div>
-      </div>
+<div class="row">
+  <div class="large-2 columns">
+    <ul id="edit_dash_nav" class="side-nav">
+      <li class="active"><a href="#">Layouts</a></li>
+      <li class="divider"></li>
+      <li><a href="#">Permisions</a></li>
+    </ul>
   </div>
-</form>
+  <div class="large-10 columns">
+    <br/>
+    <div class="row">
+      <form class="custom">
+        <div class="row">
+          <div class="small-2 columns">
+            <h6>Dashboard </h6>
+          </div>
+          <div class="small-2 columns">
+            <input type="text" placeholder="unique name">
+          </div>
+          <div class="small-2 columns">
+            <select id="customDropdown1" class="small">
+              <option>draft</option>
+              <option>active</option>
+            </select>
+          </div>
+          <div class="small-2 columns">
+          </div>
+          <div class="small-6 columns">
+              <button class="small">Save</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div id="dashboard_layputs" class="row">
+      	<%= render partial: "dashboard_layouts" %>
+    </div>
+    <div  id="dashboard_users" class="row">
+     	<%= render partial: "dashboard_users" %>
+    </div>
+  </div>
+</div>
