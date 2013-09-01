@@ -6,6 +6,8 @@ var Dashboard = {};
 
 Dashboard.createForm = (function(){
     var me =  $('#add_dashboard_form');
+    if (!me)
+       return null;
     var inputs =  me.find('input');
     var alertView =  me.find('.alert');
     
@@ -18,7 +20,8 @@ Dashboard.createForm = (function(){
         $.each(inputs, function(index, input){
             params[$(input).attr('name')] = $(input).attr('value')
         }); 
-        alertView.css("visibility", "hidden"); 
+        alertView.css("visibility", "hidden");
+        Global.mask.css("visibility", "visible"); 
         $.ajax({
             type: 'POST',
             url: '/dashboards',
@@ -34,10 +37,10 @@ Dashboard.createForm = (function(){
                 } else {
                     successFun(data);
                 }
-            //Global.mask.hide();
+                Global.mask.css("visibility", "hidden");
             },
             error: function(xhr, type){
-            //Global.mask.hide();
+                Global.mask.css("visibility", "hidden");
             }
         }); 
     });
@@ -51,6 +54,9 @@ Dashboard.createForm = (function(){
 
 Dashboard.delForm = (function(){
     var me = $('.delete_dash_form')[0];
+
+    if (!me)
+       return null;
 
     var inputName = $('#del_dash_name')[0];
     me.curDashName;
@@ -92,50 +98,52 @@ Dashboard.delForm = (function(){
     return me;
 }());
 
+Dashboard.table  = (function(){
+    var me = $('#dashboards_table');
 
-$('#dashboards_table').on('click', '.delete_dash', function() {
-//closest doesnt work
-    var dataset = $(this).parents('tr')[0].dataset;
-    Dashboard.delForm.show(dataset);
-});
+    if (me.length === 0)
+       return null;
 
-
-Dashboard.loadAll = function(){
-    $.ajax({
-        type: 'GET',
-        url: '/dashboards',
-        headers: {
-           'X-CSRF-Token': Global.CSRF_TOKEN 
-        },
-        dataType: 'json',
-        timeout: 300,
-        success: function(data){
-            var tbody = $('#dashboards_table').find('tbody');
-            tbody.text('');
-            $.each(data.dashboards, function(index, dash){
-                var editUrl =  "http://" + window.location.host + "/dashboards/" + dash.name;
-                tbody.append(
-                  '<tr data-dash_id="' + dash._id.$oid + '" data-dash_name="' + dash.name + '"><td>'
-                       + dash.name + '</td><td>' 
-                  + '/dashboard/'+ dash.name + '</td><td>' 
-                  + '/' + '</td><td>' 
-                  + '<a href="' + editUrl + '" class="small button">edit</a>' 
-                  + '<button class="small button delete_dash">delete</button>' 
-                  + '</td></tr>');
-            });
-           // Global.mask.hide();
-        },
-        error: function(xhr, type){
-            console.log("server error");
-           // Global.mask.hide();
-        }
+    me.on('click', '.delete_dash', function() {
+            var dataset = $(this).parents('tr')[0].dataset;
+            Dashboard.delForm.show(dataset);
     });
-};
+  
+ 
+    me.loadAll = function(){
+        $.ajax({
+            type: 'GET',
+            url: '/dashboards',
+            headers: {
+               'X-CSRF-Token': Global.CSRF_TOKEN 
+            },
+            dataType: 'json',
+            timeout: 300,
+            success: function(data){
+                var tbody = $('#dashboards_table').find('tbody');
+                tbody.text('');
+                $.each(data.dashboards, function(index, dash){
+                    var editUrl =  "http://" + window.location.host + "/dashboards/" + dash.name;
+                    tbody.append(
+                      '<tr data-dash_id="' + dash._id.$oid + '" data-dash_name="' + dash.name + '"><td>'
+                           + dash.name + '</td><td>' 
+                      + '/dashboard/'+ dash.name + '</td><td>' 
+                      + '/' + '</td><td>' 
+                      + '<a href="' + editUrl + '" class="small button">edit</a>' 
+                      + '<button class="small button delete_dash">delete</button>' 
+                      + '</td></tr>');
+                });
+           // Global.mask.hide();
+            },
+            error: function(xhr, type){
+                console.log("server error");
+                // Global.mask.hide();
+            }
+        });
+    };
 
+    me.loadAll();
+    return me;
+}());
 
-$( function() {
-    if ($('#dashboards_table').length == 1) {
-        Dashboard.loadAll();
-    }
-});
 
