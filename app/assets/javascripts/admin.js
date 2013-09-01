@@ -155,4 +155,27 @@ Dashboard.table  = (function(){
     return me;
 }());
 
+Dashboard.editNav = (function(){
+    var me = $("#edit_dash_nav");
+    var activeLi;
+    var activePanel;
+
+    me.on('click', 'li', function(el) {
+        activeLi.removeClass("active");
+        activePanel.hide();
+        setActiveLi(this);
+    });
+
+    function setActiveLi(newLi){
+        activeLi = $(newLi);
+        activeLi.addClass("active");
+        activePanel = $("#" + newLi.dataset.panel);
+        activePanel.show();
+    };
+
+    setActiveLi(me.find('li')[0]);
+  
+    return me;
+}());
+
 

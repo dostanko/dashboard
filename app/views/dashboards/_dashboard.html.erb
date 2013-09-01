@@ -1,9 +1,9 @@
 <div class="row">
   <div class="large-2 columns">
     <ul id="edit_dash_nav" class="side-nav">
-      <li class="active"><a href="#">Layouts</a></li>
+      <li data-panel="dashboard_layputs"><a href="void:function();">Layouts</a></li>
       <li class="divider"></li>
-      <li><a href="#">Permisions</a></li>
+      <li data-panel="dashboard_users"><a href="void:function();">Permisions</a></li>
     </ul>
   </div>
   <div class="large-10 columns">
@@ -31,10 +31,10 @@
         </div>
       </form>
     </div>
-    <div id="dashboard_layputs" class="row">
+    <div id="dashboard_layputs" class="row" style="display:none;">
       	<%= render partial: "dashboard_layouts" %>
     </div>
-    <div  id="dashboard_users" class="row">
+    <div  id="dashboard_users" class="row" style="display:none;">
      	<%= render partial: "dashboard_users" %>
     </div>
   </div>
