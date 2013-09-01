@@ -24,10 +24,12 @@ class DashboardsController < ApplicationController
     @dash = Dash.where(:name => name)[0] 
   end
 
-  def delete
-    dash_id = params[:dash_id]
-    Dash.delete(dash_id)
-    format.json { render :json => {:errors => "",  :dashboard =>  dashboard } }
+  def destroy
+    dash_id = params[:id]
+    result = Dash.find(dash_id).destroy
+    respond_to do |format|
+      format.json { render :json => {:errors => result ? "" : "Can't delete dash" } }
+    end
   end
   
 end

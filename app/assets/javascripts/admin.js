@@ -53,12 +53,13 @@ Dashboard.createForm = (function(){
 }());
 
 Dashboard.delForm = (function(){
-    var me = $('.delete_dash_form')[0];
+    var me = $($('.delete_dash_form')[0]);
 
     if (!me)
        return null;
 
     var inputName = $('#del_dash_name')[0];
+    var alertView =  me.find('h6.alert');
     me.curDashName;
     me.curDashId;
 
@@ -67,33 +68,41 @@ Dashboard.delForm = (function(){
         me.curDashId = dataset.dash_id;
         inputName.value = "";
         //me.find('.alert').css('visibility', 'hidden');
-        $(me).css("visibility", "visible");
+        me.css("visibility", "visible");
         Global.mask.css("visibility", "visible");
     }
    
     $('#del_dash_btn').click( function(){
         if (me.curDashName !== inputName.value){
+            alertView.text("Name doesn't match");
+            alertView.css("visibility", "visible"); 
             return;
         }
         $.ajax({
             type: 'DELETE',
-            url: '/dashboards',
+            url: '/dashboards/' +  me.curDashId,
             headers: {
                'X-CSRF-Token': Global.CSRF_TOKEN 
             },
-            data: {id : me.curDashId},
             dataType: 'json',
             success: function(data){
+                Dashboard.table.loadAll();
+                closeMe();
             },
             error: function(data){
             }
         });
     });
 
-    $(me).find('.hide_form').click( function() {
-        Global.mask.css("visibility", "hidden");
-        $(me).css("visibility", "hidden");
+    me.find('.hide_form').click( function() {
+        closeMe();
     });
+
+    function closeMe(){
+        Global.mask.css("visibility", "hidden");
+        alertView.css("visibility", "hidden"); 
+        me.css("visibility", "hidden");
+    };
 
     return me;
 }());
