@@ -14,6 +14,18 @@ div.delete_dash_form {
     background:white;
     padding:20px;
     visibility: hidden;
+    z-index:100;
+}
+
+div.schedule_view {
+	position:fixed;
+	top: 50px; 
+	left: 50px;  
+    background:white;
+    padding:20px;
+    visibility: hidden;
+	z-index:100;
+	background:white;
 }
 
 h6.alert{

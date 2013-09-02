@@ -216,3 +216,40 @@ Dashboard.layputsTable = (function(){
 
     return me;
 }());
+
+Dashboard.layputSchedule = (function(){
+	var me = $('#layout_schedule');
+	if (me.length === 0)
+        return null;
+
+    //@start_min - mins from 00:00 
+    //@len  - in mins
+    //@periodicity - in mins
+    //@end_min   - mins from 00:00 
+    me.addSchedule = function(params){	
+	    if (!params.periodicity){    
+	        for (var i=params.start_min; i < params.start_min + params.len; i++){	
+	 	        var cell = $('#min' + i);		
+	            cell.css('background', 'pink');
+	        };
+	    } else {
+	        for (var i=params.start_min; i <= params.end_min; i = i + params.periodicity){	
+		        for (var j=i; j < i + params.len; j++){	
+				    var cell = $('#min' + j);		
+				    cell.css('background', 'pink');
+				}
+	        };		 
+	    }
+    };
+    me.addSchedule({start_min: 65, len: 40, periodicity: 120, end_min: 960});
+    return me;
+}());
+
+
+$('#show_new_schedule').on('click', function(){
+	Dashboard.layputSchedule.css('visibility', 'visible');
+	Global.mask.css('visibility', 'visible');
+});
+
+
+

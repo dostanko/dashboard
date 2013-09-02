@@ -3,7 +3,7 @@
     <ul id="edit_dash_nav" class="side-nav">
       <li data-panel="dashboard_layputs"><a href="void:function();">Layouts</a></li>
       <li class="divider"></li>
-      <li data-panel="dashboard_users"><a href="void:function();">Permisions</a></li>
+      <li data-panel="dashboard_users"><a href="void:function();">Permissions</a></li>
     </ul>
   </div>
   <div class="large-10 columns">
@@ -38,4 +38,24 @@
      	<%= render partial: "dashboard_users" %>
     </div>
   </div>
+</div>
+
+<div id="schedule_view" class="schedule_view">
+	<a href="javascript:void();" class="small button"> Close </a>
+	<table id="layout_schedule">
+		<thead>
+		<% for i in 0..23 do %>
+		   <th width="30px;"><%= i%></th>
+		<% end%>
+		<thead>
+		<tbody style="font-size:4px;">
+		<% for k in 0..59 do %>
+		   <tr>
+			<% for j in 0..23 do %>
+			  <td id="min<%=j*60 + k%>">&nbsp;</td>
+			<% end%>
+			</tr>
+		<% end%>
+		</tbody>
+	</table>
 </div>
