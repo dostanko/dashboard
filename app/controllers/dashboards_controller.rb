@@ -21,6 +21,7 @@ class DashboardsController < ApplicationController
 
   def show
     name = params[:id]
+    @layout_types = Layout.types
     @dash = Dash.where(:name => name)[0] 
   end
 

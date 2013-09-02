@@ -109,7 +109,6 @@ Dashboard.delForm = (function(){
 
 Dashboard.table  = (function(){
     var me = $('#dashboards_table');
-
     if (me.length === 0)
        return null;
 
@@ -157,6 +156,9 @@ Dashboard.table  = (function(){
 
 Dashboard.editNav = (function(){
     var me = $("#edit_dash_nav");
+    if (me.length === 0)
+       return null;
+
     var activeLi;
     var activePanel;
 
@@ -178,4 +180,39 @@ Dashboard.editNav = (function(){
     return me;
 }());
 
+Dashboard.templatesTable = (function(){
+    var me = $("#layout_templates");
+    var selectedTd;
+    var selectedTemplate;
+    if (me.length === 0)
+        return null;
 
+    me.on('click', 'td', function(el) {
+	    selectTd(this);
+	});		
+
+	function selectTd(newTd){
+		if (!newTd)
+		    return;
+		$(selectedTd).removeClass("selected");
+		selectedTd = newTd;
+		$(selectedTd).addClass("selected");
+	//	selectedTemplate == newLi.dataset.template;
+	};
+	selectTd(me.find("td")[0]);
+    return me;	
+}());
+
+Dashboard.layputsTable = (function(){
+    var me = $("#");
+    if (me.length === 0)
+        return null;
+
+    me.load = function(){
+
+    };
+
+    me.load(); 
+
+    return me;
+}());

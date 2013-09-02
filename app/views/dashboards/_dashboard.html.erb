@@ -9,7 +9,7 @@
   <div class="large-10 columns">
     <br/>
     <div class="row">
-      <form class="custom">
+      <form class="custom" action="">
         <div class="row">
           <div class="small-2 columns">
             <h6>Dashboard </h6>
@@ -26,13 +26,13 @@
           <div class="small-2 columns">
           </div>
           <div class="small-6 columns">
-              <button class="small">Save</button>
+              <a href="void:javascript();" class="small button">Save</a>
           </div>
         </div>
       </form>
     </div>
     <div id="dashboard_layputs" class="row" style="display:none;">
-      	<%= render partial: "dashboard_layouts" %>
+      	<%= render partial: "dashboards/layouts/list" %>
     </div>
     <div  id="dashboard_users" class="row" style="display:none;">
      	<%= render partial: "dashboard_users" %>

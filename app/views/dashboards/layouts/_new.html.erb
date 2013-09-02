@@ -1,0 +1,95 @@
+<form class="custom">
+	<div class="row">
+		<div class="small-4 columns">
+			<label>Layout Name</label>
+		    <input type="text" placeholder="name">
+		
+		    <h6>Periods </h6>
+			<div class ="panel"> 
+				<span class="radius secondary label">
+				Starts 9:30;length 01h 01 min
+				</span>
+				<span class="round alert label">&times;</span>
+			</div>
+			<div class ="panel"> 
+				<span class="radius secondary label">
+				Starts 20:30;length 01h 45min <br>
+				</span>
+				<span class="round alert label">&times;</span>
+				<span class="radius secondary label">
+				Every 22h 22min; ends 18:20
+				</span>
+			</div>
+			<br/>
+			
+			<div class="alert-box alert"> Time conflicts<a href="#" class="close">&times;</a></div>
+			<div class="row">
+		      <div class="large-6 columns">
+			    <label>Start Time</label>
+		        <input type="text" placeholder="hours">
+		      </div>
+		      <div class="large-6 columns">
+			    <label>&nbsp;</label>
+		        <input type="text" placeholder="mins">
+		      </div>
+		    </div>
+		   
+			<div class="row">
+		      <div class="large-6 columns">
+			    <label>Length</label>
+		        <input type="text" placeholder="hours">
+		      </div>
+		      <div class="large-6 columns">
+			    <label>&nbsp;</label>
+		        <input type="text" placeholder="mins">
+		      </div>
+		    </div>
+		
+		    <label for="periodicity">
+			    <input name="periodicity" type="radio" CHECKED>
+			    <span class="custom radio checked"></span>one time a day</label>
+			
+		    <label for="periodicity">
+			    <input name="periodicity" type="radio">
+			    <span class="custom radio"></span>periodicity</label>
+			
+			<br>
+			   <div class="row">
+			      <div class="large-6 columns">
+				    <label>Every</label>
+			        <input type="text" placeholder="hours">
+			      </div>
+			      <div class="large-6 columns">
+				    <label>&nbsp;</label>
+			        <input type="text" placeholder="mins">
+			      </div>
+			    </div>
+
+				<div class="row">
+			      <div class="large-6 columns">
+				    <label>End Time</label>
+			        <input type="text" placeholder="hours">
+			      </div>
+			      <div class="large-6 columns">
+				    <label>&nbsp;</label>
+			        <input type="text" placeholder="mins">
+			      </div>
+			    </div>
+
+	       <br/>
+	    </div>
+		<div class="small-8 columns">
+	        <table id="layout_templates">
+                <tbody>
+			        <tr>
+				    <td><%= image_tag("layout1.png") %></td>
+				    <td><%= image_tag("layout2.png") %></td>
+				    <td><%= image_tag("layout3.png") %></td>
+			        </tr>
+                </tbody>			
+	        </table>	
+	    </div>
+	</div>
+<!--%=	select "p", "p", @layout_types, {}, {class: "small"} %-->
+<a href="#" class="tiny button"> Add Time Period </a>
+</form>
