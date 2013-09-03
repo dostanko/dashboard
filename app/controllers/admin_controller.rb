@@ -1,4 +1,4 @@
-# require 'net/http'
+require 'net/http'
 
 class AdminController < ApplicationController
   def index
@@ -6,8 +6,8 @@ class AdminController < ApplicationController
   
   def login
     # SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed
-    # uri = URI('https://heroes.epam.com/api/authentication/login')
-    # res = Net::HTTP.post_form(uri, {'userName' => 'v1', 'password' => 'v2'})
+    # uri = URI('http://heroes.epam.com/api/authentication/login')
+    # res = Net::HTTP.post_form(uri, {'userName' => params[:login], 'password' => params[:password]})
     # puts res.body
     #User.create(email: "dostanko@gmail.com", role: "SUPER_ADMIN")
     current_user = User.where(:email => params[:login]).first
