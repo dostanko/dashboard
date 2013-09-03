@@ -218,9 +218,14 @@ Dashboard.layputsTable = (function(){
 }());
 
 Dashboard.layputSchedule = (function(){
-	var me = $('#layout_schedule');
+	var me = $('#schedule_view');
 	if (me.length === 0)
         return null;
+
+    me.find('.close').on('click', function(){
+		me.css('visibility', 'hidden');
+		Global.mask.css('visibility', 'hidden');
+    });
 
     //@start_min - mins from 00:00 
     //@len  - in mins

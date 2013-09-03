@@ -40,15 +40,18 @@
   </div>
 </div>
 
-<div id="schedule_view" class="schedule_view">
-	<a href="javascript:void();" class="small button"> Close </a>
+<div id="schedule_view" class="row schedule_view">
+	<div class="small-1 columns">
+	<a href="javascript:void();" class="small button close"> Close </a>
+	</div>
+	<div class="small-11 columns">
 	<table id="layout_schedule">
 		<thead>
 		<% for i in 0..23 do %>
 		   <th width="30px;"><%= i%></th>
 		<% end%>
 		<thead>
-		<tbody style="font-size:4px;">
+		<tbody style="font-size:3px;">
 		<% for k in 0..59 do %>
 		   <tr>
 			<% for j in 0..23 do %>
@@ -58,4 +61,5 @@
 		<% end%>
 		</tbody>
 	</table>
+	</div>
 </div>

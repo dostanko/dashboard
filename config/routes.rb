@@ -10,6 +10,10 @@ Dashboard::Application.routes.draw do
    get 'dashboard/:name', to: 'dashboard#show'
 
    resources :dashboards
+ 
+   namespace :dashboard do
+     resources :layouts
+   end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

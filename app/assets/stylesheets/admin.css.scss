@@ -20,9 +20,9 @@ div.delete_dash_form {
 div.schedule_view {
 	position:fixed;
 	top: 50px; 
-	left: 50px;  
+	left: 50%; 
+    margin-left: -500px;
     background:white;
-    padding:20px;
     visibility: hidden;
 	z-index:100;
 	background:white;
